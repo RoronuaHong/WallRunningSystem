@@ -125,12 +125,12 @@ void AWRCharacter::PlayerIsRunning() {
 				FVector EndVector = WRCharacter->GetActorLocation() + WRCharacter->GetActorRightVector() * 150.f;
 
 				bIsWallRightHit = GetWorld()->LineTraceSingleByChannel(OutRightHit, StartVector, EndVector, ECC_GameTraceChannel1, TraceParams);
-				DrawDebugLine(GetWorld(), StartVector, EndVector, FColor::Red, false, -1.0f, '\000', 2.0f);
+				//DrawDebugLine(GetWorld(), StartVector, EndVector, FColor::Red, false, -1.0f, '\000', 2.0f);
 
 				EndVector = WRCharacter->GetActorLocation() + WRCharacter->GetActorRightVector() * 150.f * -1;
 
 				bIsWallLeftHit = GetWorld()->LineTraceSingleByChannel(OutLeftHit, StartVector, EndVector, ECC_GameTraceChannel1, TraceParams);
-				DrawDebugLine(GetWorld(), StartVector, EndVector, FColor::Blue, false, -1.0f, '\000', 2.0f);
+				//DrawDebugLine(GetWorld(), StartVector, EndVector, FColor::Blue, false, -1.0f, '\000', 2.0f);
 
 				if(bIsWallLeftHit && bIsWallRightHit) {
 					if(OutLeftHit.Distance < OutRightHit.Distance) {
@@ -216,7 +216,7 @@ void AWRCharacter::PlayerIsRunning() {
 
 					//// Sequence 3:
 					//// Calculate arc path based on sin value of the degree in range between 0-180 then calculate max hieight off set and add it to the player Z axis
-					float Interp = bIsInAir ? 10.f : 80.f;
+					float Interp = bIsInAir ? 10.f : 60.f;
 
 					ZValue = FMath::FInterpConstantTo(ZValue, 180.f, GetWorld()->GetDeltaSeconds(), Interp);
 
